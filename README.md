@@ -43,8 +43,10 @@ Break-even preemption rate                        1.38 /hr
 ## Install
 
 ```bash
-pip install assay-cli
+pip install git+https://github.com/nexbitau/assay-cli
 ```
+
+Not on PyPI yet.
 
 No runtime dependencies. PyYAML is used if you happen to have it; otherwise a
 small built-in reader handles the flat `key: value` files below. JSON works too.
