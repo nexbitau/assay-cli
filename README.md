@@ -67,7 +67,7 @@ checkpoint_write_sec: 135
 checkpoint_interval_steps: 1533
 restart_sec: 180
 
-preemptions_per_hour: null    # the number nobody publishes
+preemptions_per_hour: null
 ```
 
 ## The model
@@ -83,8 +83,8 @@ W = compute · (1 + c/T) / (1 − λ·(T/2 + r))
 
 for checkpoint write `c`, interval `T`, restart `r` and preemption rate `λ`.
 When `λ·(T/2 + r) ≥ 1`, recovery consumes wall time at least as fast as the run
-produces it and the run never completes — `assay` reports that as a verdict
-rather than an error, because it is a real answer.
+produces it and the run never completes. `assay` reports that as a verdict
+rather than an error.
 
 Optimal checkpoint interval is Young/Daly, `T* = sqrt(2·c·MTBF)`. The
 approximation degrades when `T*` approaches MTBF, and `assay` says so.
@@ -101,10 +101,10 @@ base wall time:
 Guess at a number and present it as fact. `preemptions_per_hour` and
 `checkpoint_write_sec` are provider-specific and unpublished. Leave the first
 null and `assay` prints the cost range your uncertainty produces, and what it is
-worth to measure — which is the honest output, and usually the useful one.
+worth to measure.
 
-It also makes no network calls and sends nothing anywhere. Training data,
-weights and source never leave your machine, because they never enter this tool.
+It makes no network calls. The only file it reads is the run description you
+pass on the command line.
 
 ## Development
 

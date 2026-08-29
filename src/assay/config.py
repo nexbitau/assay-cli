@@ -1,9 +1,7 @@
 """Run description: loading, validation, derived quantities.
 
-Input is YAML or JSON. PyYAML is used when it happens to be installed, but it
-is not a dependency — a training box should not need to `pip install` a parser
-to answer a cost question. The fallback handles the flat `key: value` subset
-this file format actually uses.
+Input is YAML or JSON. Uses PyYAML if it is installed; if not, a fallback
+parser handles the flat `key: value` subset these files use.
 """
 
 from __future__ import annotations
@@ -72,7 +70,7 @@ class Run:
     checkpoint_write_sec: float
     checkpoint_interval_sec: float
     restart_sec: float
-    preempt_per_hour: float | None      # None = unmeasured; this is the point
+    preempt_per_hour: float | None      # None = unmeasured
     seq_len: int | None
     global_batch: int | None
     gpu_type: str

@@ -1,9 +1,8 @@
 """Terminal output.
 
-Two rules here. Money is never printed to more precision than it is known to,
-and any figure that rests on an unmeasured parameter is labelled as such —
-including the range that parameter's plausible values produce. The whole point
-of the tool is to be honest about which number is a guess.
+Money is never printed to more precision than it is known to. Any figure
+resting on an unmeasured parameter is labelled, with the range that parameter's
+plausible values produce.
 """
 
 from __future__ import annotations
@@ -12,7 +11,7 @@ from . import model
 from .config import Run
 
 # Plausible-λ sweep used when the preemption rate has not been measured.
-# Deliberately wide: narrowing it is what a canary buys you.
+# Wide on purpose; a canary narrows it.
 LAMBDA_LOW, LAMBDA_HIGH = 0.05, 0.30
 
 W = 44   # label column width

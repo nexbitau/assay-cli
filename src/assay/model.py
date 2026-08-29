@@ -77,10 +77,9 @@ def spot_wall_time(
 
         W = base / (1 − λ·(T/2 + r))
 
-    Returns None when λ·(T/2 + r) >= 1. That is not an error — it means
-    recovery consumes time at least as fast as the run produces it, so the run
-    never finishes. "Spot is not viable at this preemption rate" is the answer,
-    and the caller should print it as a verdict.
+    Returns None when λ·(T/2 + r) >= 1: recovery consumes time as fast as the
+    run produces it and the run never finishes. Callers should print that as a
+    verdict.
     """
     base = on_demand_wall_time(compute_sec, write_sec, interval_sec)
     lam = preempt_per_hour / SEC_PER_HOUR
